@@ -1,4 +1,4 @@
-// ame-shell(https://github.com/TatsuyaM2667/ame-shell)の src/cmd/ame-light.zig から生成。直すときは ame-shell の方を直す
+// ame-shell(https://github.com/TatsuyaM2667/ame-shell)の src/cmd/amaterasu.zig から生成。直すときは ame-shell の方を直す
 const std = @import("std");
 
 pub fn build(b: *std.Build) void {
@@ -6,7 +6,7 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
     const lib = b.createModule(.{ .root_source_file = b.path("src/lib/lib.zig") });
 
-    const exe = b.addExecutable(.{ .name = "ame-light", .root_source_file = b.path("src/main.zig"), .target = target, .optimize = optimize });
+    const exe = b.addExecutable(.{ .name = "amaterasu", .root_source_file = b.path("src/main.zig"), .target = target, .optimize = optimize });
     exe.root_module.addImport("ame_lib", lib);
     exe.linkLibC();
     exe.linkSystemLibrary("dbus-1");
@@ -14,7 +14,7 @@ pub fn build(b: *std.Build) void {
 
     const run = b.addRunArtifact(exe);
     if (b.args) |a| run.addArgs(a);
-    b.step("run", "ame-light を実行する").dependOn(&run.step);
+    b.step("run", "amaterasu を実行する").dependOn(&run.step);
 
     const t_main = b.addTest(.{ .root_source_file = b.path("src/main.zig"), .target = target, .optimize = optimize });
     t_main.root_module.addImport("ame_lib", lib);

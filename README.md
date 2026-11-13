@@ -1,4 +1,4 @@
-# ame-light
+# amaterasu
 
 画面の明るさを読む・変える・覚えて戻す小さなコマンド(brightnessctl の代わり。root なしで logind 経由)。
 
@@ -8,12 +8,13 @@ ame-shell は画面の要らない仕事を、1 つのことをして標準入�
 ## 使い方
 
 ```text
-ame-light: 画面の明るさを読む / 変える(brightnessctl の代わり)。
+amaterasu: 画面の明るさを読む / 変える(brightnessctl の代わり)。
+名前は光の神、天照大神(あまてらす)から。
 
-  ame-light                 今の明るさ(0〜100 の数)を 1 行
-  ame-light set 40          40% に(40% とも書ける)
-  ame-light set +5 / -5     5% 明るく / 暗く(brightnessctl の 5%+ / 5%- の書き方も読む)
-  ame-light restore         最後に set した明るさに戻す(起動時。カーネルは再起動のたびにファームウェアの値に戻すので)
+  amaterasu                 今の明るさ(0〜100 の数)を 1 行
+  amaterasu set 40          40% に(40% とも書ける)
+  amaterasu set +5 / -5     5% 明るく / 暗く(brightnessctl の 5%+ / 5%- の書き方も読む)
+  amaterasu restore         最後に set した明るさに戻す(起動時。カーネルは再起動のたびにファームウェアの値に戻すので)
 
 set した明るさ(%)は $XDG_STATE_HOME/ame-shell/light に覚える。
 
@@ -26,13 +27,13 @@ logind(elogind)の Session.SetBrightness に頼む(ログイン中の人なら r
 ## ビルド
 
 ```sh
-zig build -Doptimize=ReleaseSafe   # zig-out/bin/ame-light(Zig 0.13、libc と libdbus)
+zig build -Doptimize=ReleaseSafe   # zig-out/bin/amaterasu(Zig 0.13、libc と libdbus)
 zig build test
 ```
 
 ## このリポジトリについて
 
-正本は ame-shell の `src/cmd/ame-light.zig` です。このリポジトリは `scripts/split-repos.sh` が生成して同期しています。
+正本は ame-shell の `src/cmd/amaterasu.zig` です。このリポジトリは `scripts/split-repos.sh` が生成して同期しています。
 直したいところがあれば ame-shell の方へお願いします。
 
 ライセンス: GPL-3.0(ame-shell と同じ)
